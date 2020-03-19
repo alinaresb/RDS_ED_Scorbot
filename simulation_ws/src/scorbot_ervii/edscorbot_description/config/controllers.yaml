@@ -1,0 +1,58 @@
+# Publish all joint states
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+
+# Joints controllers, each joint with individual command
+base_position_controller:
+  type: position_controllers/JointPositionController
+  joint: base
+  pid:
+      d: 0
+      i: 0
+      p: 10
+
+shoulder_position_controller:
+  type: position_controllers/JointPositionController
+  joint: shoulder
+  pid:
+      d: 0
+      i: 0
+      p: 10
+
+elbow_position_controller:
+  type: position_controllers/JointPositionController
+  joint: elbow
+  pid:
+      d: 0
+      i: 0
+      p: 10
+
+
+pitch_position_controller:
+  type: position_controllers/JointPositionController
+  joint: pitch
+  pid:
+      d: 0
+      i: 0
+      p: 10
+
+
+roll_position_controller:
+  type: position_controllers/JointPositionController
+  joint: roll
+  pid:
+      d: 0
+      i: 0
+      p: 10
+
+
+# Joint trajectory controller, all joints controller
+trajectory_controller:
+  type: position_controllers/JointTrajectoryController
+  joints:
+    - base
+    - shoulder
+    - elbow
+    - pitch
+    - roll

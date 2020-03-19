@@ -1,0 +1,30 @@
+<launch>
+    <arg name="edscorbot" default="machines"/>
+    <arg name="debug" default="false"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="pause" default="false"/>  <!-- Start Gazebo with a blank world -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find edscorbot_sims)/worlds/myworld.world"/>
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg pause)"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="headless" value="$(arg headless)"/>
+        <env name="GAZEBO_MODEL_PATH" value="$(find edscorbot_sims)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+    </include>
+</launch>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+ <include file="$(find spawn_robot_tools_pkg)/launch/spawn_robot_urdf.launch">
+  <arg name="x" default="0.0" />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="1.0" />
+  <arg name="roll" default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw" default="0.0" />
+  <arg name="urdf_robot_file" default="$(find edscorbot_sims)/urdf/edscorbot.urdf" />
+  <arg name="robot_name" default="edscorbot" />
+ </include>
+</launch>
